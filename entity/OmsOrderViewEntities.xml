@@ -270,6 +270,9 @@ under the License.
         <member-entity entity-alias="FT" entity-name="org.apache.ofbiz.product.facility.FacilityType" join-from-alias="F">
             <key-map field-name="facilityTypeId"/>
         </member-entity>
+        <member-entity entity-alias="FGM" entity-name="org.apache.ofbiz.product.facility.FacilityGroupMember" join-from-alias="F">
+            <key-map field-name="facilityId"/>
+        </member-entity>
         <member-entity entity-alias="ODR" entity-name="org.apache.ofbiz.order.order.OrderRole" join-from-alias="OH" join-optional="true">
             <key-map field-name="orderId"/>
         </member-entity>
@@ -316,6 +319,9 @@ under the License.
         <alias entity-alias="F" field="externalId" name="facilityExternalId"/>
         <alias entity-alias="FT" name="facilityTypeId"/>
         <alias entity-alias="FT" field="parentTypeId" name="parentFacilityTypeId"/>
+        <alias entity-alias="FGM" name="facilityGroupId"/>
+        <alias entity-alias="FGM" field="fromDate" name="facilityGroupMemberFromDate"/>
+        <alias entity-alias="FGM" field="thruDate" name="facilityGroupMemberThruDate"/>
         <alias entity-alias="OS" name="statusDatetime"/>
         <alias entity-alias="PD" name="productId"/>
         <alias entity-alias="PD" name="productTypeId"/>
@@ -337,6 +343,9 @@ under the License.
                 <econdition entity-alias="ODR" field-name="roleTypeId" operator="equals" value="BILL_TO_CUSTOMER"/>
             </econditions>
             <order-by field-name="entryDate"/>
+        </entity-condition>
+        <entity-condition>
+            <date-filter from-field-name="facilityGroupMemberFromDate" thru-field-name="facilityGroupMemberThruDate"/>
         </entity-condition>
     </view-entity>
 
